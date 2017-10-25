@@ -1,3 +1,19 @@
+# Define the routes which determine what URL are serviced by what applications.
+# The application/services are defined in the bootstrap.yml file of individual applications
+# using the spring.application.name property.
+
+# Note that we don't proxy the calls to the authorization server. The reason being that
+# Spring cloud security would need to secure the api gateway before it can route the
+# requests using zuul
+zuul:
+  prefix: /api
+  ignoredServices: '*'
+  routes:
+    vets-service: /vet/**
+    visits-service: /visit/**
+    customers-service: /customer/**
+    api-gateway: /gateway/**
+	
 server:
   port: 8080
   compression:
@@ -7,11 +23,24 @@ server:
 
 # Internationalization
 spring.messages.basename: messages/messages
+# Define the Eureka server that handles service registration
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
 
 ---
 spring:
   profiles: docker
 eureka:
+# Register our microservices to Eureka using hostnames in a Docker environment will not work, they will all get
+# one and the same hostname. Instead we configure them to use its IP address during registration with Eureka.
+  instance:
+    preferIpAddress: true
   client:
     serviceUrl:
       defaultZone: http://192.168.99.100:32790/eureka/
+# Define the port where the API gateway server would be running. This could always be port 8080
+# since each docker container has it's own IP
+server:
+  port: 8080
