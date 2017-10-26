@@ -14,7 +14,7 @@ eureka:
 # one and the same hostname. Instead we configure them to use its IP address during registration with Eureka.
   instance:
      preferIpAddress: true
-	 ip-address: 192.168.99.100
+     ip-address: 192.168.99.100
   client:
      serviceUrl:
       defaultZone: http://192.168.99.100:32785/eureka/
