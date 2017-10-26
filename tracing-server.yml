@@ -3,7 +3,7 @@ server:
 
 eureka:
   client:
-    serviceUrl:
+     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
 ---
@@ -13,10 +13,10 @@ eureka:
 # Register our microservices to Eureka using hostnames in a Docker environment will not work, they will all get
 # one and the same hostname. Instead we configure them to use its IP address during registration with Eureka.
   instance:
-    preferIpAddress: true
-	ip-address: 192.168.99.100
+     preferIpAddress: true
+	 ip-address: 192.168.99.100
   client:
-    serviceUrl:
+     serviceUrl:
       defaultZone: http://192.168.99.100:32785/eureka/
 server:
    port: 9411
