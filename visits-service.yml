@@ -16,7 +16,7 @@ eureka:
     preferIpAddress: true
   client:
     serviceUrl:
-      defaultZone: http://192.168.99.100:32790/eureka/
+      defaultZone: http://192.168.99.100:32777/eureka/
 # Define the port where the web portal server would be running. This could always be port 8080
 # since each docker container has it's own IP
 server:
