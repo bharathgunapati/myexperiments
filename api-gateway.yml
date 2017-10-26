@@ -9,24 +9,24 @@ zuul:
   prefix: /api
   ignoredServices: '*'
   routes:
-    vets-service: /vet/**
-    visits-service: /visit/**
-    customers-service: /customer/**
-    api-gateway: /gateway/**
-	
+     vets-service: /vet/**
+     visits-service: /visit/**
+     customers-service: /customer/**
+     api-gateway: /gateway/**
+	 
 server:
   port: 8080
   compression:
-    enabled: true
-    mime-types: application/json,text/css,application/javascript
-    min-response-size: 2048
+     enabled: true
+     mime-types: application/json,text/css,application/javascript
+     min-response-size: 2048
 
 # Internationalization
 spring.messages.basename: messages/messages
 # Define the Eureka server that handles service registration
 eureka:
   client:
-    serviceUrl:
+     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
 ---
@@ -36,9 +36,9 @@ eureka:
 # Register our microservices to Eureka using hostnames in a Docker environment will not work, they will all get
 # one and the same hostname. Instead we configure them to use its IP address during registration with Eureka.
   instance:
-    preferIpAddress: true
+     preferIpAddress: true
   client:
-    serviceUrl:
+     serviceUrl:
       defaultZone: http://192.168.99.100:32790/eureka/
 # Define the port where the API gateway server would be running. This could always be port 8080
 # since each docker container has it's own IP
